@@ -10,9 +10,9 @@ useEffect(() => {
         let random = Math.ceil(Math.random() *40);
         setImage(`http://localhost:8000/assets/hamster-${random}.jpg`)
 
-        return () => clearInterval(selectedImage);
     },8000)
-
+    
+    return () => clearInterval(selectedImage);
 
 }, [])
 
