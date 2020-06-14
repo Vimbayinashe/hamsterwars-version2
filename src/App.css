@@ -69,9 +69,10 @@ footer {
     width: 50vw;
 }
 
-.home {
+/* .home {
+    background-image: url('http://localhost:8000/assets/hamster-32.jpg');
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-}
+} */

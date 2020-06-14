@@ -12,6 +12,7 @@
     "firebase-admin": "^8.12.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "uuid": "^8.0.0"
   },
@@ -37,5 +38,4 @@
       "last 1 safari version"
     ]
   }
-
 }
