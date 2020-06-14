@@ -21,11 +21,11 @@ const auth = (req, res, next) => {
         next()
     }
 
-    let root = path.join(__dirname, 'public')
+    // let root = path.join(__dirname, 'public')
 
-    if (req.method === 'GET' && req.accepts('html') && !req.is('json') && !req.path.includes('.')) {
-        res.sendFile('index.html', { root })
-      } else next()
+    // if (req.method === 'GET' && req.accepts('html') && !req.is('json') && !req.path.includes('.')) {
+    //     res.sendFile('index.html', { root })
+    //   } else next()
 }
 
 module.exports = { auth };

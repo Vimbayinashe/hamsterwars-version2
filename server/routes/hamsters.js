@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { auth, db } = require('./../firebase');
+const { db } = require('./../firebase');
 const fs = require('fs');
 
 const router = new Router();
@@ -8,18 +8,24 @@ const router = new Router();
 // hämta en array med samtliga hamsterobject.
 router.get('/', async (req, res) => {
 
-    let hamsters = [];
-
-    let snapShot = await db
+    try {
+        
+        let hamsters = [];
+        
+        let snapShot = await db
         .collection('hamsters')
         .get();
-    
-    snapShot.forEach(doc => {
-        hamsters.push(doc.data().hamster)
-    })
-
-    res.send({ hamsters: hamsters })
-
+        
+        snapShot.forEach(doc => {
+            hamsters.push(doc.data().hamster)
+        })
+        
+        res.send({ hamsters: hamsters })
+        
+    } catch (err) {
+        console.error(err);
+        res.status(400).send({ msg: err })  
+    }
 })
 
 // http://localhost:3000/hamsters/
@@ -32,7 +38,7 @@ router.get('/:id', async (req, res) => {
     try {
         
         // hämta ett slumpat hamsterobjekt 
-        if (req.path == "/random" || req.path == "/random/") {
+        if (req.path === "/random" || req.path === "/random/") {
 
             let hamsters = [];
             
@@ -49,7 +55,7 @@ router.get('/:id', async (req, res) => {
             
             console.log(randomHamster.hamster.id);
 
-            res.status(200).send({ hamster: randomHamster })
+             res.status(200).send({ hamster: randomHamster })
 
         } else {
 
@@ -66,10 +72,12 @@ router.get('/:id', async (req, res) => {
                 // hämta hamsters uppgifter
                 let hamster = snapShot.data().hamster;
                 // console.log(hamster);
-                res.status(200).send({ hamster: hamster })
+                 res.status(200).send({ hamster: hamster })
                 
             } else {
-                res.status(404).send( { msg: `This hamster does not exist in our database.`})
+                 res.status(404).send( { 
+                    msg: `This hamster does not exist in our database.`
+                })
             }
 
         }
@@ -110,20 +118,28 @@ router.put('/:id/result', async (req, res) => {
 
         // kolla om data är ogiltig
         if (req.body.win === req.body.defeat) {
-            throw err = "Win and defeat cannot be the same."
+            // throw err;  //= "Win and defeat cannot be the same."
+            return res.status(400).send({ 
+                status: 'error',
+                error: "Win and defeat cannot be the same."
+            })
         }
          
         // uppdatera hamsterobjekts egenskaper
         // det tas emot endast Boolean värden (See note below)
-        if (req.body.win == true) {
+        if (req.body.win === true) {
             hamster.wins++            
             hamster.games++
         }  
-        else if (req.body.defeat == true) {
+        else if (req.body.defeat === true) {
             hamster.defeats++
             hamster.games++
         } else {
-            throw err = "Invalid input"
+            // throw err = "Invalid input"
+            return res.status(400).send({ 
+                status: 'error',
+                error: 'Invalid input'
+            })
         }
         
         // uppdatera hamsterobjektet i firestore
