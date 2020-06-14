@@ -6,11 +6,9 @@ const path = require('path');
 
 const app = express();
 
-const rootPath = path.join(__dirname, 'public')
 
 // servar React-frontend senare.
-app.use(express.static(rootPath))
-app.use(express.static(__dirname + '/../build'))
+app.use( express.static(__dirname + '/../build'));
 
 // servar bilderna via en static route
 app.use('/assets', express.static(__dirname + 'public/assets'))  
