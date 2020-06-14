@@ -1,0 +1,52 @@
+METHOD : API Url -> Beskrivning
+
+GET: /assets/            ->  servar bilderna via en static route
+GET: /hamsters/          ->  hämta en array med samtliga hamsterobject
+GET: /hamsters/:id       ->  hämta ett hamsterobject med eferfrågat id
+GET: /hamsters/random    ->  hämta ett slumpat hamsterobject 
+
+PUT: /hamsters/:id/result ->  Updaterar ett hamsterobjects egenskaper:    
+                                wins,defeats och +1 på games
+  exempel req.body:
+    {
+        "win" : true,
+        "defeat" : false
+    }
+        OR
+    {
+        "win" : 1,
+        "defeat" : 0
+    }
+
+GET: /hamsters/random/:amount   ->  hämta två eller flera slumpade hamstrar 
+POST: /hamsters/create-database ->  skicka och spara data.json i firestore
+
+POST: /hamsters/new             ->  ladda upp en ny hamster objekt
+
+  exempel req.body:
+    {
+        "loves": "Running that wheeeeeeeeeeeeeeeel!",
+        "age": 5,
+        "favFood": "persika",
+        "name": "Tulau",
+        "imgName": "hamster-Y.jpg"
+    }
+
+GET: /charts/top    ->  hämta  en array med top 5 mest vinnande hamsterobject
+GET: /charts/bottom ->  hämta  en array med top 5 mest fölorande hamsterobject
+
+GET: /games         ->  hämta en array med samtliga matchobject som hållits
+POST: /games        ->  spara en match
+    exempel req.body:
+    {
+        "win" : 38,
+        "defeat" : 15
+    }
+
+GET: /stats/total   ->  returnerar ett statsobject med totalt antal matcher som 
+                        hållits
+GET: /stats/age     ->  returnerar ett statsobjekt med ålders statistiks 
+                        (min, avg, max)
+
+
+POST: /images/upload -> ladda upp en hamster bild. Obs! Den fungerande inte än
