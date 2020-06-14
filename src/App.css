@@ -1,7 +1,77 @@
 
+body {
+    margin:0;
+    padding:0;
+    height:100%;
+}
+
+.App p {
+  padding: 1em;
+}
+
+
 .App-header {
   background-color: #282c34;
   color: white;
   font-size: 2em;
-  padding: 1em;
+  min-height: 10vh;
+  padding: 0.5em;
+}
+
+.App-header h1 {
+    margin: 0;
+}
+
+.App-header nav a {
+    color: pink;
+    font-size: 0.8em;
+    margin: 0.2em;
+    padding: 0.2em;
+    text-decoration: none;
+}
+
+.App-header nav a:hover {
+    background-color: silver;
+    text-decoration: underline;
+}
+
+.home {
+    background-color: thistle;
+    border: 2px solid purple;
+    border-radius: 15px;
+    /* margin: 0 1em; */
+    padding: 0.5em 1em;
+}
+
+#root {
+    min-height: 100vh;
+    position: relative;
+}
+
+main {
+    margin: 0;
+    padding: 1em;
+    padding-bottom: 6em;
+    /* height: 70vh; */
+    width: 100vw;
+}
+
+footer {
+    background-color: wheat;
+    height: 6em;
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+}
+
+.hamster-slideshow {
+    height: 25em;
+    width: 50vw;
+}
+
+.home {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
