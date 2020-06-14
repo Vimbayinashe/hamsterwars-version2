@@ -1,17 +1,15 @@
 const express = require('express');
 const { auth } = require('./auth');
 require('dotenv/config');
-const path = require('path');
 
 
 const app = express();
-
 
 // servar React-frontend senare.
 app.use( express.static(__dirname + '/../build'));
 
 // servar bilderna via en static route
-app.use('/assets', express.static(__dirname + 'public/assets'))  
+app.use('/assets', express.static(__dirname + '/public/assets'))  
 
 
 // convert post.body -> json
