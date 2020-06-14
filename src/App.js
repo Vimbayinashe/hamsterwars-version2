@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 // , Link, NavLink, Redirect
 import Header from './components/Header';
 import Home from './components/Home';
+import Hamsters from './components/Hamsters';
 
 
 function App() {
@@ -22,6 +23,10 @@ function App() {
                     <Route path="/battle">
                         <strong>BATTLE!!!</strong>
                         <div>fill with components from other headings also</div>
+                    </Route>
+
+                    <Route path="/all-hamsters">
+                        <Hamsters />
                     </Route>
                     
                     <Route exact path="/">
