@@ -6,12 +6,14 @@ const HamsterCard = ({ hamster }) => {
     let imageUrl = '/assets/'
     return(
         <div className="hamster-card">
-            <img src={imageUrl + hamster.imgName} alt="hamster"/>
+            <div className="hamster-image">
+                <img src={imageUrl + hamster.imgName} alt="hamster"/>
+            </div>
             <div className="hamster-facts">
-                <div> Name:  { hamster.name } </div>
-                <div> Age: { hamster.age } </div>
-                <div> Favourite food { hamster.favFood } </div>
-                <div> Loves: { hamster.loves } </div>
+                <div><span>Name: </span> { hamster.name } </div>
+                <div><span>Age: </span> { hamster.age } years </div>
+                <div><span>Favourite food: </span> { hamster.favFood } </div>
+                <div><span>Loves: </span> { hamster.loves } </div>
             </div>
             <button> Select </button>
         </div>

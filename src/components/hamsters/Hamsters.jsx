@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import HamsterCard from './HamsterCard';
+import './Hamster.css';
 
 const Hamsters = () => {
 
@@ -36,7 +37,7 @@ const Hamsters = () => {
     return (
         <section>
             <h2>Hamsters</h2>
-            <section>
+            <section className="show-hamsters">
                 { JSXList }
             </section>
         </section>
