@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import HamsterCard from './HamsterCard';
 
 const Hamsters = () => {
 
@@ -6,7 +7,11 @@ const Hamsters = () => {
     
     console.log(hamsters);
     
+    let JSXList = hamsters ?  hamsters.map(hamster => (
+        <><HamsterCard key={hamster.id} hamster={hamster} /></>
+    )) : "" ;
 
+    
     useEffect(() => {
         let url = '/api/hamsters';
 
@@ -16,7 +21,7 @@ const Hamsters = () => {
                 const response = await fetch(url);
                 const json = await response.json();
 
-                return setHamsters(json);
+                return setHamsters(json.hamsters);
                 
             } catch (error) {
                 console.error(error);
@@ -31,9 +36,9 @@ const Hamsters = () => {
     return (
         <section>
             <h2>Hamsters</h2>
-            <div>
-
-            </div>
+            <section>
+                { JSXList }
+            </section>
         </section>
     )
 }
