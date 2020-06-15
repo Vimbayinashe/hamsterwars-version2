@@ -1,7 +1,6 @@
 import React from 'react';
 
 const HamsterCard = ({ hamster }) => {
-    console.log(hamster);
     
     let imageUrl = '/assets/'
     return(

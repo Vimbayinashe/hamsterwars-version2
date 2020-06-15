@@ -6,10 +6,8 @@ const Hamsters = () => {
 
     const [hamsters, setHamsters] = useState([]);
     
-    console.log(hamsters);
-    
     let JSXList = hamsters ?  hamsters.map(hamster => (
-        <><HamsterCard key={hamster.id} hamster={hamster} /></>
+        <HamsterCard key={hamster.id} hamster={hamster} />
     )) : "" ;
 
     
