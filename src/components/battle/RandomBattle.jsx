@@ -28,6 +28,16 @@ const Battle = ({ competitors, setCompetitors }) => {
 
     return(
         <section>
+            <h2>Hamster Battle</h2>
+            <p>Click on the cutest hamster!</p>
+            <div className="competing-hamster">
+                {
+                    competitors.map(c => (
+                        <img key={c.id} src={'/assets/' + c.imgName} alt="competing hamster"/>
+                    )) 
+
+                }
+            </div>
 
         </section>
     )
