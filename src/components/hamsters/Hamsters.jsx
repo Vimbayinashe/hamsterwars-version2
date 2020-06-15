@@ -35,6 +35,7 @@ const Hamsters = () => {
     return (
         <section>
             <h2>Hamsters</h2>
+            <h3>Select two hamsters for a customized battle</h3>
             <section className="show-hamsters">
                 { JSXList }
             </section>

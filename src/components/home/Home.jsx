@@ -19,14 +19,11 @@ const Home = () => {
                 <Link to="/battle">
                     <Button>Play</Button>
                 </Link>
-                <Link to="/all-hamsters/select">
-                    <Button>Pick a Battle</Button>
+                <Link to="/all-hamsters">
+                    <Button>All Hamsters</Button>
                 </Link>
                 <Link to="/stats">
                     <Button>Statistics</Button>
-                </Link>
-                <Link to="/all-hamsters">
-                    <Button>See all Hamsters</Button>
                 </Link>
                 <Link to="/upload">
                     <Button>Upload</Button>

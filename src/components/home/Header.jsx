@@ -10,8 +10,8 @@ const Header = () => {
             <nav>
                 <Link to="/">Home</Link>
                 <NavLink to ="/battle">Battle</NavLink>
+                <NavLink to="/all-hamsters">Hamsters</NavLink>
                 <NavLink to="/stats">Statistics</NavLink>
-                <NavLink to="/hamster-gallery">Hamsters</NavLink>
                 <NavLink to="/upload">Upload new hamster</NavLink>
                 {/* <NavLink to="/tournament">Hamster Tournament</NavLink> */}
             </nav>
