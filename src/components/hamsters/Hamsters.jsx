@@ -3,6 +3,9 @@ import React, { useState, useEffect } from 'react';
 const Hamsters = () => {
 
     const [hamsters, setHamsters] = useState([]);
+    
+    console.log(hamsters);
+    
 
     useEffect(() => {
         let url = '/api/hamsters';
@@ -12,9 +15,7 @@ const Hamsters = () => {
             try {
                 const response = await fetch(url);
                 const json = await response.json();
-                
-                console.log(json);
-                
+
                 return setHamsters(json);
                 
             } catch (error) {

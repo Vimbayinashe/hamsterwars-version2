@@ -2,9 +2,9 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 // , Link, NavLink, Redirect
-import Header from './components/Header';
-import Home from './components/Home';
-import Hamsters from './components/Hamsters';
+import Header from './components/home/Header';
+import Home from './components/home/Home';
+import Hamsters from './components/hamsters/Hamsters';
 
 
 function App() {
