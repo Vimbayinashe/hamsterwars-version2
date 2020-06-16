@@ -3,11 +3,7 @@ import React, { useEffect, useState } from 'react';
 
 const Battle = ({ props: { competitors, setCompetitors, outcome, setOutcome }}) => {
 
-    const [reply, setReply] = useState('');
-    const [reply2, setReply2] = useState('');
-
-    // console.log(reply);
-    console.log('post: ', reply2);
+    const [winner, setWinner] = useState('');
 
     useEffect(() => {
 
@@ -31,27 +27,41 @@ const Battle = ({ props: { competitors, setCompetitors, outcome, setOutcome }}) 
     }, [setCompetitors])
 
 
+    let loser = winner 
+        ? competitors.find(hamster =>(hamster.id !== winner)) 
+        : '';
+
+
     useEffect(()=> {
 
-        let matches = async () => {
+        let postMatch = async () => {
 
             let url = '/api/games';
                     
             try {
                 const response = await fetch(url);
-                const json = response.json();
+                const json = await response.json();
+
+                console.log(json);
+                
         
-                return setReply(json);
+                return (json);
                 
             } catch (err) {
                 console.error(err);
             }
-        }
+        };
+
+        let result = {
+            win: winner,
+            defeat: loser.id
+        };
         
 
-        matches();
+        postMatch();
+        postMatchResult(result);
         
-    }, [outcome])
+    }, [winner, loser])
 
 
     function handleClick(winner) {
@@ -64,9 +74,7 @@ const Battle = ({ props: { competitors, setCompetitors, outcome, setOutcome }}) 
             win: Number(winner),
             defeat: loser.id
         })
-
-        setReply2(postMatchResult(outcome));
-        
+       
 
         return outcome;
     }
@@ -81,8 +89,8 @@ const Battle = ({ props: { competitors, setCompetitors, outcome, setOutcome }}) 
                     competitors.map(c => (
                         <img key={c.id} src={'/assets/' + c.imgName}     
                             alt="competing hamster"
-                            // onClick={ ()=> setWinner(Number(c.id)) } />
-                            onClick={ ()=> handleClick(c.id) } />
+                            onClick={ ()=> setWinner(Number(c.id)) } />
+                            // onClick={ ()=> handleClick(c.id) } />
                     )) 
 
                 }
@@ -93,6 +101,8 @@ const Battle = ({ props: { competitors, setCompetitors, outcome, setOutcome }}) 
 }
 
 export default Battle;
+
+
 
 let postMatchResult = async (data) => {
 
@@ -108,9 +118,9 @@ let postMatchResult = async (data) => {
             body: JSON.stringify(data)
         });
 
-        const json = response.json();
+        const json = await response.json();
 
-        console.log(json);
+        console.log('post: ', json);
         
         return json;
 
