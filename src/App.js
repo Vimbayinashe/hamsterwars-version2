@@ -13,7 +13,17 @@ function App() {
 
     const [randomCompetitors, setRandomCompetitors] = useState([]);
     const [customCompetitors, setCustomCompetitors] = useState([]);
-    const [outcome, setOutcome] = useState([]);
+    const [outcome, setOutcome] = useState({});
+
+    // console.log('App outcome: ', outcome);
+    
+
+    const randomBattleProps = {
+        competitors: randomCompetitors,
+        setCompetitors: setRandomCompetitors,
+        outcome: outcome,
+        setOutcome: setOutcome
+    }
 
     return (
         <Router className = "main">
@@ -35,8 +45,9 @@ function App() {
                     <Route path="/battle">
                         <strong>OG BATTLE!!!</strong>
                         <RandomBattle 
-                            competitors={randomCompetitors} 
-                            setCompetitors={setRandomCompetitors}>
+                            // competitors={randomCompetitors} 
+                            // setCompetitors={setRandomCompetitors}
+                            props={randomBattleProps}>
                         </RandomBattle>
                     </Route>
 
