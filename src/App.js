@@ -7,6 +7,7 @@ import Home from './components/home/Home';
 import Hamsters from './components/hamsters/Hamsters';
 import RandomBattle from './components/battle/RandomBattle';
 import CustomBattle from './components/battle/CustomBattle';
+import key from './APIKey';
 
 
 function App() {
@@ -93,7 +94,7 @@ let postMatchResult = async (data) => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'hamster40'
+                'Authorization': key
             },
             body: JSON.stringify(data)
         });
