@@ -34,51 +34,18 @@ const Battle = ({ props: { competitors, setCompetitors, outcome, setOutcome }}) 
 
     useEffect(()=> {
 
-        let postMatch = async () => {
+        if(winner) {
+            
+            let result = {
+                win: winner,
+                defeat: loser.id
+            };
 
-            let url = '/api/games';
-                    
-            try {
-                const response = await fetch(url);
-                const json = await response.json();
-
-                console.log(json);
-                
-        
-                return (json);
-                
-            } catch (err) {
-                console.error(err);
-            }
-        };
-
-        let result = {
-            win: winner,
-            defeat: loser.id
-        };
-        
-
-        postMatch();
-        postMatchResult(result);
+            postMatchResult(result);
+        }
         
     }, [winner, loser])
 
-
-    function handleClick(winner) {
-
-        let loser = winner 
-            ? competitors.find(hamster =>(hamster.id !== winner)) 
-            : '';
-
-        setOutcome({
-            win: Number(winner),
-            defeat: loser.id
-        })
-       
-
-        return outcome;
-    }
-    
 
     return(
         <section>
@@ -90,12 +57,10 @@ const Battle = ({ props: { competitors, setCompetitors, outcome, setOutcome }}) 
                         <img key={c.id} src={'/assets/' + c.imgName}     
                             alt="competing hamster"
                             onClick={ ()=> setWinner(Number(c.id)) } />
-                            // onClick={ ()=> handleClick(c.id) } />
                     )) 
-
                 }
             </div>
-
+            
         </section>
     )
 }
