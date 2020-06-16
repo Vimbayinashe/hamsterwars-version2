@@ -13,11 +13,9 @@ import key from './APIKey';
 function App() {
 
     const [randomCompetitors, setRandomCompetitors] = useState([]);
-    const [customCompetitors, setCustomCompetitors] = useState([]);
+    // const [customCompetitors, setCustomCompetitors] = useState([]);
     const [outcome, setOutcome] = useState({});
 
-    // console.log('App outcome: ', outcome);
-    
 
     const randomBattleProps = {
         competitors: randomCompetitors,
@@ -73,12 +71,6 @@ function App() {
             </Switch>
         </Router>
 
-        // <div className="App">
-        // <header className="App-header">
-        //     <h1>Hamster Wars</h1>
-        // </header>
-        // <p>coming soon...</p>
-        // </div>
     );
 }
 

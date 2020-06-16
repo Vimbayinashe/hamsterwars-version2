@@ -1,6 +1,3 @@
-// { 
-//     "key" : "hamster40"
-// }
 
 const key = "hamster40";
 

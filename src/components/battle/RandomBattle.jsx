@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-// import { text } from 'express';
 
 const Battle = ({ props: { competitors, setCompetitors, outcome, setOutcome, postMatchResult }}) => {
 
@@ -44,7 +43,7 @@ const Battle = ({ props: { competitors, setCompetitors, outcome, setOutcome, pos
             postMatchResult(result);
         }
         
-    }, [winner, loser])
+    }, [winner, loser, postMatchResult])
 
 
     return(
