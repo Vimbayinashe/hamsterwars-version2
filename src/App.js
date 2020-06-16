@@ -38,15 +38,13 @@ function App() {
                 <Switch>
 
                     <Route path="/battle/:id1/:id2">
-                        <strong>Battle Params</strong>
-                        <CustomBattle />
+                        <CustomBattle outcome={outcome}
+                            setOutcome={setOutcome}
+                            postMatchResult={postMatchResult} />
                     </Route>
 
                     <Route path="/battle">
-                        <strong>OG BATTLE!!!</strong>
                         <RandomBattle 
-                            // competitors={randomCompetitors} 
-                            // setCompetitors={setRandomCompetitors}
                             props={randomBattleProps}>
                         </RandomBattle>
                     </Route>
