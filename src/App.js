@@ -22,7 +22,8 @@ function App() {
         competitors: randomCompetitors,
         setCompetitors: setRandomCompetitors,
         outcome: outcome,
-        setOutcome: setOutcome
+        setOutcome: setOutcome,
+        postMatchResult
     }
 
     return (
@@ -81,3 +82,31 @@ function App() {
 }
 
 export default App;
+
+
+let postMatchResult = async (data) => {
+
+    let url = '/api/games';
+            
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'hamster40'
+            },
+            body: JSON.stringify(data)
+        });
+
+        const json = await response.json();
+
+        console.log('post: ', json);
+        
+        return json;
+
+                        
+
+    } catch (err) {
+        console.error(err);
+    }
+}

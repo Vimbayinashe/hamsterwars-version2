@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 // import { text } from 'express';
 
-const Battle = ({ props: { competitors, setCompetitors, outcome, setOutcome }}) => {
+const Battle = ({ props: { competitors, setCompetitors, outcome, setOutcome, postMatchResult }}) => {
 
     const [winner, setWinner] = useState('');
 
@@ -60,38 +60,10 @@ const Battle = ({ props: { competitors, setCompetitors, outcome, setOutcome }}) 
                     )) 
                 }
             </div>
-            
+
         </section>
     )
 }
 
 export default Battle;
 
-
-
-let postMatchResult = async (data) => {
-
-    let url = '/api/games';
-            
-    try {
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'hamster40'
-            },
-            body: JSON.stringify(data)
-        });
-
-        const json = await response.json();
-
-        console.log('post: ', json);
-        
-        return json;
-
-                        
-
-    } catch (err) {
-        console.error(err);
-    }
-}
