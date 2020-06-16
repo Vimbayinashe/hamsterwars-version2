@@ -1,7 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 // import { text } from 'express';
 
 const Battle = ({ competitors, setCompetitors }) => {
+
+    // const []
 
     useEffect(() => {
 
@@ -33,7 +35,8 @@ const Battle = ({ competitors, setCompetitors }) => {
             <div className="competing-hamster">
                 {
                     competitors.map(c => (
-                        <img key={c.id} src={'/assets/' + c.imgName} alt="competing hamster"/>
+                        <img key={c.id} src={'/assets/' + c.imgName}     
+                            alt="competing hamster"/>
                     )) 
 
                 }

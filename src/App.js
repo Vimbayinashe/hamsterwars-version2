@@ -12,7 +12,8 @@ import CustomBattle from './components/battle/CustomBattle';
 function App() {
 
     const [randomCompetitors, setRandomCompetitors] = useState([]);
-    const [customCompetitors, setCustomCompetitors] = useState('');
+    const [customCompetitors, setCustomCompetitors] = useState([]);
+    const [outcome, setOutcome] = useState([]);
 
     return (
         <Router className = "main">

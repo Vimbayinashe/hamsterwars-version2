@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { auth, db } = require('./../firebase');
+const { db } = require('./../firebase');
 const { v4: uuidv4 } = require('uuid');
 
 const router = new Router();
@@ -77,7 +77,7 @@ router.post('/', async (req, res) => {
         .then(message += `Hamster ${winner.id} updated `)
         .catch(err => console.error(err))
         
-        // uppdatera vinnande hamster i firestore
+        // uppdatera förlorande hamster i firestore
         db
         .collection('hamsters')
         .doc(JSON.stringify(loser.id))        
