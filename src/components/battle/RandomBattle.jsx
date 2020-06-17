@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 const Battle = ({ props: { competitors, setCompetitors, outcome, setOutcome, postMatchResult }}) => {
 
-    const [errorMessage, setErrorMessage] = useState(false);
+    const [fetchError, setFetchError] = useState(false);
     const [winner, setWinner] = useState('');
     console.log('Random Battle competitors', competitors);
 
@@ -17,14 +17,13 @@ const Battle = ({ props: { competitors, setCompetitors, outcome, setOutcome, pos
                 const response = await fetch(url);
                 if( response.status !== 200 ) {
                     console.log('Could not fetch competitors. Status: ' + response.status);
-                    // todo: kanske visa felmeddelande för användaren
-                    setErrorMessage(true);
+                    setFetchError(true);
                 }
                 const json = await response.json();
 
                 if (json.hamsters) {
                     setCompetitors(json.hamsters);
-                    setErrorMessage(false);
+                    setFetchError(false);
                 }
                 
                 return json.hamsters;
@@ -38,7 +37,7 @@ const Battle = ({ props: { competitors, setCompetitors, outcome, setOutcome, pos
         fetchRandomHamsters();
         
     }, [setCompetitors])      
-    
+
 
     let loser = winner && competitors
         ? competitors.find(hamster =>(hamster.id !== winner)) 
@@ -78,7 +77,7 @@ const Battle = ({ props: { competitors, setCompetitors, outcome, setOutcome, pos
             </div>
             <div className="error-message"> 
                 {
-                    errorMessage ? 'We are facing challenges loading hamsters' : ''
+                    fetchError ? 'We are facing challenges loading hamsters' : ''
                 }
             </div>
 

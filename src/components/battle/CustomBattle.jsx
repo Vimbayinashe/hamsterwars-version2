@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 
 const Battle = ({ outcome, setOutcome, postMatchResult }) => {
 
+    const [fetchError, setFetchError] = useState(false);
     const [hamstersExist, setHamstersExist] = useState(false);
     const [hamsters, setHamsters] = useState([]);
     const [winner, setWinner] = useState('');
@@ -21,21 +22,29 @@ const Battle = ({ outcome, setOutcome, postMatchResult }) => {
          
             try {
                 const response = await fetch(url);
+                if( response.status !== 200 ) {
+                    console.log('Could not fetch Custom - all hamsters. Status: ' + response.status);
+                    setFetchError(true);
+                }
                 const json = await response.json();
 
-                console.log('Fetching ALL Hamsters - Custom Battle!')
-        
-                return setHamsters(json.hamsters)
+                if (json.hamsters) {
+                    setHamsters(json.hamsters);
+                    setFetchError(false);
+                }
+
+                return json.hamsters;
                 
             } catch (error) {
                 console.error(error);
             }
         }
-
+        
         // work around (limit exceeded)
-        // fetchAllHamsters();
+        console.log('Fetching ALL Hamsters - Custom Battle!')
+        fetchAllHamsters();
 
-    }, [])  // setHamsters hamsters
+    }, [])  
     
 
     useEffect(() => {
@@ -87,6 +96,11 @@ const Battle = ({ outcome, setOutcome, postMatchResult }) => {
                         : <div className="error-message"> 
                             Please select valid hamsters between ....
                           </div>
+                }
+            </div>
+            <div className="error-message"> 
+                { 
+                    fetchError ? 'We are facing challenges loading hamsters' : ''
                 }
             </div>
         </section>
