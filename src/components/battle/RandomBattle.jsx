@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const Battle = ({ props: { competitors, setCompetitors, outcome, setOutcome, postMatchResult }}) => {
+const Battle = ({ props: { competitors, setCompetitors, setOutcome, postMatchResult }}) => {
 
     const [fetchError, setFetchError] = useState(false);
     const [winner, setWinner] = useState('');
@@ -55,9 +55,11 @@ const Battle = ({ props: { competitors, setCompetitors, outcome, setOutcome, pos
 
             console.log('Posting Random Match Battle!')
             postMatchResult(result);
+            setOutcome(result);
+
         }
         
-    }, [winner, loser, postMatchResult])
+    }, [winner, loser, postMatchResult, setOutcome])
 
         
     return(

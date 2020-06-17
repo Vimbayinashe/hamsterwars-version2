@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-const Battle = ({ outcome, setOutcome, postMatchResult }) => {
+const Battle = ({ setOutcome, postMatchResult }) => {
 
     const [fetchError, setFetchError] = useState(false);
     const [hamstersExist, setHamstersExist] = useState(false);
@@ -58,38 +58,12 @@ const Battle = ({ outcome, setOutcome, postMatchResult }) => {
     }, [id1, id2, hamsters, setHamstersExist])
 
 
-    
-    async function handleClick (id) {
-        
-        await setWinner(Number(id));
-
-        let loser = (winner === Number(id1) ) ? Number(id2) : Number(id1);
-
-        if(winner) {
-
-            let result = {
-                win: winner,
-                defeat: loser
-            };
-            console.log('winner: ', winner);
-            
-            console.log('Posting Custom Match Battle!')
-            postMatchResult(result);
-            setOutcome(result);
-            console.log('result: ', result);
-            
-            
-        }
-        
-    }
-
+    let loser = (winner === Number(id1) ) ? Number(id2) : Number(id1);
     
     useEffect(()=> {
         
         if(winner) {
-            
-            let loser = (winner === Number(id1) ) ? Number(id2) : Number(id1);
-            
+
             let result = {
                 win: winner,
                 defeat: loser
@@ -98,10 +72,9 @@ const Battle = ({ outcome, setOutcome, postMatchResult }) => {
             console.log('Posting Custom Match Battle!')
             postMatchResult(result);
             setOutcome(result);
-            console.log('result: ', result);
         }
         
-    }, [id1, id2, winner, postMatchResult, setOutcome])
+    }, [loser, winner, postMatchResult, setOutcome])
     
 
     return(

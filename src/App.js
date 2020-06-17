@@ -21,7 +21,6 @@ function App() {
     const randomBattleProps = {
         competitors: randomCompetitors,
         setCompetitors: setRandomCompetitors,
-        outcome: outcome,
         setOutcome: setOutcome,
         postMatchResult
     }
@@ -39,9 +38,9 @@ function App() {
                 <Switch>
 
                     <Route path="/battle/:id1/:id2">
-                        <CustomBattle outcome={outcome}
+                        <CustomBattle 
                             setOutcome={setOutcome}
-                            postMatchResult={postMatchResult} />
+                            postMatchResult={postMatchResult}/>
                     </Route>
 
                     <Route path="/battle">
