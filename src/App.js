@@ -16,7 +16,8 @@ function App() {
     // const [customCompetitors, setCustomCompetitors] = useState([]);
     const [outcome, setOutcome] = useState({});
 
-
+    console.log('outcome in App.js: ', outcome);
+    
     const randomBattleProps = {
         competitors: randomCompetitors,
         setCompetitors: setRandomCompetitors,

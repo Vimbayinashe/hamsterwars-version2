@@ -58,9 +58,12 @@ const Battle = ({ outcome, setOutcome, postMatchResult }) => {
     }, [id1, id2, hamsters, setHamstersExist])
 
 
-    let loser = (winner === id1) ? Number(id2) : Number(id1);
     
-    useEffect(()=> {
+    async function handleClick (id) {
+        
+        await setWinner(Number(id));
+
+        let loser = (winner === Number(id1) ) ? Number(id2) : Number(id1);
 
         if(winner) {
 
@@ -68,12 +71,37 @@ const Battle = ({ outcome, setOutcome, postMatchResult }) => {
                 win: winner,
                 defeat: loser
             };
+            console.log('winner: ', winner);
             
             console.log('Posting Custom Match Battle!')
             postMatchResult(result);
+            setOutcome(result);
+            console.log('result: ', result);
+            
+            
         }
         
-    }, [winner, loser, postMatchResult])
+    }
+
+    
+    useEffect(()=> {
+        
+        if(winner) {
+            
+            let loser = (winner === Number(id1) ) ? Number(id2) : Number(id1);
+            
+            let result = {
+                win: winner,
+                defeat: loser
+            };
+
+            console.log('Posting Custom Match Battle!')
+            postMatchResult(result);
+            setOutcome(result);
+            console.log('result: ', result);
+        }
+        
+    }, [id1, id2, winner, postMatchResult, setOutcome])
     
 
     return(
