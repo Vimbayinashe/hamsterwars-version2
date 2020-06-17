@@ -1,5 +1,3 @@
-const path = require('path');
-
 
 // Authorization middleware
 const auth = (req, res, next) => {
