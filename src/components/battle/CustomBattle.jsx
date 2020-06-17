@@ -7,9 +7,6 @@ const Battle = ({ outcome, setOutcome, postMatchResult }) => {
     const [hamstersExist, setHamstersExist] = useState(false);
     const [hamsters, setHamsters] = useState([]);
     const [winner, setWinner] = useState('');
-
-    console.log('winner: ', winner);
-
     const { id1 } = useParams();
     const { id2 } = useParams();
 
@@ -40,7 +37,6 @@ const Battle = ({ outcome, setOutcome, postMatchResult }) => {
             }
         }
         
-        // work around (limit exceeded)
         console.log('Fetching ALL Hamsters - Custom Battle!')
         fetchAllHamsters();
 
@@ -86,21 +82,21 @@ const Battle = ({ outcome, setOutcome, postMatchResult }) => {
             <p>Click on the cutest hamster!</p>
             <div className="competing-hamster">
                 {
-                    hamstersExist ?
-                        <><img src={`/assets/hamster-${id1}.jpg`}     
-                            alt="competing hamster"
-                            onClick={ ()=> setWinner(Number(id1)) } />
+                    hamstersExist
+                    ? <><img src={`/assets/hamster-${id1}.jpg`}     
+                        alt="competing hamster"
+                        onClick={ ()=> setWinner(Number(id1)) } />
                         <img src={`/assets/hamster-${id2}.jpg`}     
-                            alt="competing hamster"
-                            onClick={ ()=> setWinner(Number(id2)) } /></>
-                        : <div className="error-message"> 
-                            Please select valid hamsters between ....
-                          </div>
-                }
-            </div>
-            <div className="error-message"> 
-                { 
-                    fetchError ? 'We are facing challenges loading hamsters' : ''
+                        alt="competing hamster"
+                        onClick={ ()=> setWinner(Number(id2)) } /></>
+
+                    : <div className="error-message"> 
+                        { 
+                            fetchError 
+                            ? 'We are facing challenges loading hamsters' 
+                            : 'Please select valid hamsters between ....'
+                        }
+                    </div>
                 }
             </div>
         </section>
