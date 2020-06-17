@@ -2,15 +2,12 @@ import React, { useEffect, useState } from 'react';
 
 const Battle = ({ props: { competitors, setCompetitors, outcome, setOutcome, postMatchResult }}) => {
 
-    const [errorMessage, setErrorMessage] = useState('hamsters loading..')
+    const [errorMessage, setErrorMessage] = useState(false);
     const [winner, setWinner] = useState('');
     console.log('Random Battle competitors', competitors);
 
     
     useEffect(() => {
-        
-        // Get new competitors
-        // setCompetitors(null);
 
         let url = '/api/hamsters/random/2';
 
@@ -21,10 +18,14 @@ const Battle = ({ props: { competitors, setCompetitors, outcome, setOutcome, pos
                 if( response.status !== 200 ) {
                     console.log('Could not fetch competitors. Status: ' + response.status);
                     // todo: kanske visa felmeddelande för användaren
+                    setErrorMessage(true);
                 }
                 const json = await response.json();
 
-                if (json.hamsters) setCompetitors(json.hamsters);
+                if (json.hamsters) {
+                    setCompetitors(json.hamsters);
+                    setErrorMessage(false);
+                }
                 
                 return json.hamsters;
 
@@ -35,13 +36,9 @@ const Battle = ({ props: { competitors, setCompetitors, outcome, setOutcome, pos
         
         console.log('Fetching 2 Random hamsters!')
         fetchRandomHamsters();
-
-        console.log('hamsters after fetch: ', competitors);
         
-        // setCompetitors([]);
-
-    }, [])      // setCompetitors
-
+    }, [setCompetitors])      
+    
 
     let loser = winner && competitors
         ? competitors.find(hamster =>(hamster.id !== winner)) 
@@ -76,7 +73,12 @@ const Battle = ({ props: { competitors, setCompetitors, outcome, setOutcome, pos
                             alt="competing hamster"
                             onClick={ ()=> setWinner(Number(c.id)) } />
                     )) 
-                    : <div> Loading...</div>
+                    : <div> Hamsters Loading...</div>
+                }
+            </div>
+            <div className="error-message"> 
+                {
+                    errorMessage ? 'We are facing challenges loading hamsters' : ''
                 }
             </div>
 
