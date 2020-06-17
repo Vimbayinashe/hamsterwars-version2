@@ -8,6 +8,7 @@ import Hamsters from './components/hamsters/Hamsters';
 import RandomBattle from './components/battle/RandomBattle';
 import CustomBattle from './components/battle/CustomBattle';
 import Matchup from './components/battle/Matchup';
+import Stats from './components/statistics/Stats';
 import key from './APIKey';
 
 
@@ -72,6 +73,10 @@ function App() {
             <main>
                 {/* Here comes <Switch> & <Route>'s that point to the specific components  */}
                 <Switch>
+
+                    <Route path="/stats">
+                        <Stats />
+                    </Route>
                     <Route path="/matchup">
                         <Matchup 
                             fetchError={fetchError}
