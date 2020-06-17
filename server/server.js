@@ -1,7 +1,7 @@
 const express = require('express');
 const { auth } = require('./auth');
 require('dotenv/config');
-
+const path = require('path');
 
 const app = express();
 
@@ -33,6 +33,11 @@ app.use('/api/charts', chartsRoute);
 app.use('/api/games', gamesRoute);
 app.use('/api/stats', statsRoute);
 app.use('/api/images', imagesRoute);
+
+// resolve 'Cannot GET ...' error messages
+app.get('/*', (req,res) =>{
+    res.sendFile(path.join(__dirname + '/../build/index.html'));
+});
 
 
 const port = process.env.PORT || 8000;
