@@ -12,10 +12,10 @@ const Matchup = ({ outcome }) => {
     return (
         <section>
             {
-                outcome.winner ? 
+                outcome.win ? 
                 <><h2>The Winner!</h2>
                 <div className="competing-hamster">
-                    <img src={`/assets/hamster-${outcome.winner}.jpg`} alt=""/>
+                    <img src={`/assets/hamster-${outcome.win}.jpg`} alt=""/>
                 </div></>
                 : <div className="error-message">
                     There is no previous match result to show.

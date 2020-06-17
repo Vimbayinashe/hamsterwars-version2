@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 
-const Battle = ({ setOutcome, postMatchResult }) => {
+const Battle = ({ outcome, setOutcome, postMatchResult }) => {
 
     const [fetchError, setFetchError] = useState(false);
     const [hamstersExist, setHamstersExist] = useState(false);
     const [hamsters, setHamsters] = useState([]);
     const [winner, setWinner] = useState('');
-    const { id1 } = useParams();
-    const { id2 } = useParams();
+    const { id1, id2 } = useParams();
+    const history = useHistory();
 
 
     useEffect(() => {
@@ -72,10 +72,17 @@ const Battle = ({ setOutcome, postMatchResult }) => {
             console.log('Posting Custom Match Battle!')
             postMatchResult(result);
             setOutcome(result);
+            renderRedirect();
         }
         
     }, [loser, winner, postMatchResult, setOutcome])
+
     
+    let renderRedirect = () => {
+        return history.push(`/matchup/${id1}/${id2}`);
+        // return history.push(`/matchup/${outcome.win}/${outcome.defeat}`);
+    }
+
 
     return(
         <section>
@@ -100,10 +107,12 @@ const Battle = ({ setOutcome, postMatchResult }) => {
                     </div>
                 }
             </div>
+            <div>
+                <button onClick={()=> renderRedirect}>Submit</button>
+            </div>
         </section>
     )
 }
 
 export default Battle;
-
 

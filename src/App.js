@@ -21,6 +21,7 @@ function App() {
     const randomBattleProps = {
         competitors: randomCompetitors,
         setCompetitors: setRandomCompetitors,
+        outcome: outcome,
         setOutcome: setOutcome,
         postMatchResult
     }
@@ -42,6 +43,7 @@ function App() {
 
                     <Route path="/battle/:id1/:id2">
                         <CustomBattle 
+                            outcome={outcome}
                             setOutcome={setOutcome}
                             postMatchResult={postMatchResult}/>
                     </Route>
