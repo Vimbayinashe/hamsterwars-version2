@@ -21,6 +21,8 @@ const Battle = ({ outcome, setOutcome, postMatchResult }) => {
             try {
                 const response = await fetch(url);
                 const json = await response.json();
+
+                console.log('Fetching ALL Hamsters - Custom Battle!')
         
                 return setHamsters(json.hamsters)
                 
@@ -29,36 +31,41 @@ const Battle = ({ outcome, setOutcome, postMatchResult }) => {
             }
         }
 
-        fetchAllHamsters();
+        // work around (limit exceeded)
+        // fetchAllHamsters();
 
     }, [])  // setHamsters hamsters
-
+    
 
     useEffect(() => {
 
-        // if (hamsters.length < 0)
-        let id1Exists = (hamsters.some(hamster => hamster.id === Number(id1) ));
-        let id2Exists = (hamsters.some(hamster => hamster.id === Number(id2) ));
+        if (hamsters) {
+            let id1Exists = (hamsters.some(hamster => hamster.id === Number(id1) ));
+            let id2Exists = (hamsters.some(hamster => hamster.id === Number(id2) ));
 
-        (id1Exists && id2Exists) ? setHamstersExist(true) : setHamstersExist(false);
+            (id1Exists && id2Exists) ? setHamstersExist(true) : setHamstersExist(false);
+        }
 
+        // work around (limit exceeded)
+        setHamstersExist(true);
 
     }, [id1, id2, hamsters, setHamstersExist])
 
 
+    let loser = (winner === id1) ? Number(id2) : Number(id1);
+    
     useEffect(()=> {
 
-        let loser = (winner === id1) ? Number(id2) : Number(id1);
-        
         let result = {
             win: winner,
             defeat: loser
         };
 
+        console.log('Posting Custom Match Battle!')
         postMatchResult(result);
         
-    }, [id1, id2, winner, postMatchResult])
-
+    }, [winner, loser, postMatchResult])
+    
 
     return(
         <section>
@@ -67,10 +74,10 @@ const Battle = ({ outcome, setOutcome, postMatchResult }) => {
             <div className="competing-hamster">
                 {
                     hamstersExist ?
-                        <><img src={'/assets/' + id1}     
+                        <><img src={`/assets/hamster-${id1}.jpg`}     
                             alt="competing hamster"
                             onClick={ ()=> setWinner(Number(id1)) } />
-                        <img src={'/assets/' + id2}     
+                        <img src={`/assets/hamster-${id2}.jpg`}     
                             alt="competing hamster"
                             onClick={ ()=> setWinner(Number(id2)) } /></>
                         : <div className="error-message"> 

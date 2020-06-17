@@ -21,6 +21,7 @@ const Battle = ({ props: { competitors, setCompetitors, outcome, setOutcome, pos
             }
         }
         
+        console.log('Fetching 2 Random hamsters!')
         fetchRandomHamsters();
 
     }, [setCompetitors])
@@ -40,6 +41,7 @@ const Battle = ({ props: { competitors, setCompetitors, outcome, setOutcome, pos
                 defeat: loser.id
             };
 
+            console.log('Posting Random Match Battle!')
             postMatchResult(result);
         }
         
