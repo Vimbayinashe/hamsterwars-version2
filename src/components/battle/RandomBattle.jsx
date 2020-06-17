@@ -9,7 +9,7 @@ const Battle = ({ props: { competitors, setCompetitors, outcome, setOutcome, pos
     useEffect(() => {
         
         // Get new competitors
-        setCompetitors('');
+        setCompetitors(null);
         console.log('competitors', competitors);
 
         let url = '/api/hamsters/random/2';
@@ -18,8 +18,14 @@ const Battle = ({ props: { competitors, setCompetitors, outcome, setOutcome, pos
             
             try {
                 const response = await fetch(url);
+                if( response.status !== 200 ) {
+                    console.log('Could not fetch competitors. Status: ' + response.status);
+                    // todo: kanske visa felmeddelande för användaren
+                }
                 const json = await response.json();
+                console.log('RandomBattle.useEffect json.hamsters=', json.hamsters);
                 setCompetitors(json.hamsters)
+                
                 
                 return json
 
@@ -34,7 +40,7 @@ const Battle = ({ props: { competitors, setCompetitors, outcome, setOutcome, pos
     }, [])      // setCompetitors
 
 
-    let loser = winner 
+    let loser = winner && competitors
         ? competitors.find(hamster =>(hamster.id !== winner)) 
         : '';
 
@@ -55,6 +61,8 @@ const Battle = ({ props: { competitors, setCompetitors, outcome, setOutcome, pos
     }, [winner, loser, postMatchResult])
 
 
+    console.log('RandomBattle render competitors:', competitors);
+        
     return(
         <section>
             <h2>Hamster Battle</h2>

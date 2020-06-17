@@ -7,7 +7,7 @@ const router = new Router();
 
 // hämta en array med samtliga hamsterobject.
 router.get('/', async (req, res) => {
-
+    console.log('server hamsters.js GET /');
     try {
         
         let hamsters = [];
@@ -186,7 +186,8 @@ router.put('/:id/result', async (req, res) => {
 
 // hämta två eller flera slumpade hamstrar
 router.get('/random/:amount', async (req, res) => {
-
+    console.log('server hamsters.js GET /random/:amount');
+    
     try {
         
         let hamsters = [];

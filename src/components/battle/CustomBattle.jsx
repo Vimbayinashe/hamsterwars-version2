@@ -68,7 +68,7 @@ const Battle = ({ outcome, setOutcome, postMatchResult }) => {
             postMatchResult(result);
         }
         
-    }, [id1, id2, winner, loser, postMatchResult])
+    }, [winner, loser, postMatchResult])
     
 
     return(
