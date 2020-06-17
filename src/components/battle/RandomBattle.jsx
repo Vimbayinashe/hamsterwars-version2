@@ -52,11 +52,13 @@ const Battle = ({ props: { competitors, setCompetitors, outcome, setOutcome, pos
             <p>Click on the cutest hamster!</p>
             <div className="competing-hamster">
                 {
+                    competitors ?
                     competitors.map(c => (
                         <img key={c.id} src={'/assets/' + c.imgName}     
                             alt="competing hamster"
                             onClick={ ()=> setWinner(Number(c.id)) } />
                     )) 
+                    : <div> Loading...</div>
                 }
             </div>
 

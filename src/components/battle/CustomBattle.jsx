@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-const Battle = ({ props: { outcome, setOutcome, postMatchResult }}) => {
+const Battle = ({ outcome, setOutcome, postMatchResult }) => {
 
     const [hamstersExist, setHamstersExist] = useState(false);
-    const [hamsters, setHamsters] = useState('');
+    const [hamsters, setHamsters] = useState([]);
     const [winner, setWinner] = useState('');
 
 
@@ -31,11 +31,12 @@ const Battle = ({ props: { outcome, setOutcome, postMatchResult }}) => {
 
         fetchAllHamsters();
 
-    }, [setHamsters, hamsters])
+    }, [])  // setHamsters hamsters
 
 
     useEffect(() => {
 
+        // if (hamsters.length < 0)
         let id1Exists = (hamsters.some(hamster => hamster.id === Number(id1) ));
         let id2Exists = (hamsters.some(hamster => hamster.id === Number(id2) ));
 
@@ -72,7 +73,9 @@ const Battle = ({ props: { outcome, setOutcome, postMatchResult }}) => {
                         <img src={'/assets/' + id2}     
                             alt="competing hamster"
                             onClick={ ()=> setWinner(Number(id2)) } /></>
-                        : 'Please select valid hamsters between ....'
+                        : <div className="error-message"> 
+                            Please select valid hamsters between ....
+                          </div>
                 }
             </div>
         </section>

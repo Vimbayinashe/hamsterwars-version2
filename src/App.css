@@ -82,7 +82,6 @@ footer {
 /* Competing Hamsters */
 
 .competing-hamster {
-    color: red;
     margin: 1em;
     margin-bottom: 5em;
     text-align: center;
@@ -102,3 +101,7 @@ footer {
     box-shadow: 0px 0px 8px 5px rgb(92, 204, 40);
 }
 
+.error-message {
+    color: red;
+
+}
