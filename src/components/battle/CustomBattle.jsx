@@ -7,6 +7,7 @@ const Battle = ({ outcome, setOutcome, postMatchResult }) => {
     const [hamsters, setHamsters] = useState([]);
     const [winner, setWinner] = useState('');
 
+    console.log('winner: ', winner);
 
     const { id1 } = useParams();
     const { id2 } = useParams();
@@ -56,15 +57,18 @@ const Battle = ({ outcome, setOutcome, postMatchResult }) => {
     
     useEffect(()=> {
 
-        let result = {
-            win: winner,
-            defeat: loser
-        };
+        if(winner) {
 
-        console.log('Posting Custom Match Battle!')
-        postMatchResult(result);
+            let result = {
+                win: winner,
+                defeat: loser
+            };
+            
+            console.log('Posting Custom Match Battle!')
+            postMatchResult(result);
+        }
         
-    }, [winner, loser, postMatchResult])
+    }, [id1, id2, winner, loser, postMatchResult])
     
 
     return(
