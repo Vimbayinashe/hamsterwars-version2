@@ -7,13 +7,13 @@ import Home from './components/home/Home';
 import Hamsters from './components/hamsters/Hamsters';
 import RandomBattle from './components/battle/RandomBattle';
 import CustomBattle from './components/battle/CustomBattle';
+import Matchup from './components/battle/Matchup';
 import key from './APIKey';
 
 
 function App() {
 
     const [randomCompetitors, setRandomCompetitors] = useState([]);
-    // const [customCompetitors, setCustomCompetitors] = useState([]);
     const [outcome, setOutcome] = useState({});
 
     console.log('outcome in App.js: ', outcome);
@@ -36,6 +36,9 @@ function App() {
             <main>
                 {/* Here comes <Switch> & <Route>'s that point to the specific components  */}
                 <Switch>
+                    <Route path="/matchup">
+                        <Matchup outcome={outcome} />
+                    </Route>
 
                     <Route path="/battle/:id1/:id2">
                         <CustomBattle 
@@ -92,6 +95,7 @@ let postMatchResult = async (data) => {
         const json = await response.json();
 
         console.log('post: ', json);
+        console.log('KEY: ', key);
         
         return json;
 
