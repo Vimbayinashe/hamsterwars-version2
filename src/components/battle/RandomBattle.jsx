@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+
 
 const Battle = ({ props: { competitors, setCompetitors, setOutcome, postMatchResult }}) => {
 
     const [fetchError, setFetchError] = useState(false);
     const [winner, setWinner] = useState('');
+    const history = useHistory();
+
     console.log('Random Battle competitors', competitors);
 
     
@@ -56,10 +60,16 @@ const Battle = ({ props: { competitors, setCompetitors, setOutcome, postMatchRes
             console.log('Posting Random Match Battle!')
             postMatchResult(result);
             setOutcome(result);
-
+            renderRedirect();
         }
         
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [winner, loser, postMatchResult, setOutcome])
+
+
+    let renderRedirect = () => {
+        return history.push(`/matchup/${winner}/${loser.id}`);
+    }
 
         
     return(

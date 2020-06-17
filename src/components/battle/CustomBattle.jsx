@@ -75,12 +75,12 @@ const Battle = ({ outcome, setOutcome, postMatchResult }) => {
             renderRedirect();
         }
         
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [loser, winner, postMatchResult, setOutcome])
 
     
     let renderRedirect = () => {
         return history.push(`/matchup/${id1}/${id2}`);
-        // return history.push(`/matchup/${outcome.win}/${outcome.defeat}`);
     }
 
 
