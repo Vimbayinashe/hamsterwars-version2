@@ -1,46 +1,48 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 
-const Battle = ({ outcome, setOutcome, postMatchResult }) => {
+const Battle = ({ fetchError, hamsters, setOutcome, postMatchResult }) => {
 
-    const [fetchError, setFetchError] = useState(false);
+    // const [fetchError, setFetchError] = useState(false);
     const [hamstersExist, setHamstersExist] = useState(false);
-    const [hamsters, setHamsters] = useState([]);
+    // const [hamsters, setHamsters] = useState([]);
     const [winner, setWinner] = useState('');
     const { id1, id2 } = useParams();
     const history = useHistory();
 
+    console.log('hamsters props ', hamsters);
+    
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        let url = '/api/hamsters/';
+    //     let url = '/api/hamsters/';
 
-        let fetchAllHamsters = async () => {
+    //     let fetchAllHamsters = async () => {
          
-            try {
-                const response = await fetch(url);
-                if( response.status !== 200 ) {
-                    console.log('Could not fetch Custom - all hamsters. Status: ' + response.status);
-                    setFetchError(true);
-                }
-                const json = await response.json();
+    //         try {
+    //             const response = await fetch(url);
+    //             if( response.status !== 200 ) {
+    //                 console.log('Could not fetch Custom - all hamsters. Status: ' + response.status);
+    //                 setFetchError(true);
+    //             }
+    //             const json = await response.json();
 
-                if (json.hamsters) {
-                    setHamsters(json.hamsters);
-                    setFetchError(false);
-                }
+    //             if (json.hamsters) {
+    //                 setHamsters(json.hamsters);
+    //                 setFetchError(false);
+    //             }
 
-                return json.hamsters;
+    //             return json.hamsters;
                 
-            } catch (error) {
-                console.error(error);
-            }
-        }
+    //         } catch (error) {
+    //             console.error(error);
+    //         }
+    //     }
         
-        console.log('Fetching ALL Hamsters - Custom Battle!')
-        fetchAllHamsters();
+    //     console.log('Fetching ALL Hamsters - Custom Battle!')
+    //     fetchAllHamsters();
 
-    }, [])  
+    // }, [])  
     
 
     useEffect(() => {

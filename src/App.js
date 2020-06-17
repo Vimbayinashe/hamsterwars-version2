@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 // , Link, NavLink, Redirect
@@ -13,6 +13,8 @@ import key from './APIKey';
 
 function App() {
 
+    const [fetchError, setFetchError] = useState(false);
+    const [hamsters, setHamsters] = useState([]);
     const [randomCompetitors, setRandomCompetitors] = useState([]);
     const [outcome, setOutcome] = useState({});
 
@@ -26,6 +28,39 @@ function App() {
         postMatchResult
     }
 
+
+    useEffect(() => {
+
+        let url = '/api/hamsters/';
+
+        let fetchAllHamsters = async () => {
+         
+            try {
+                const response = await fetch(url);
+                if( response.status !== 200 ) {
+                    console.log('Could not fetch Custom - all hamsters. Status: ' + response.status);
+                    setFetchError(true);
+                }
+                const json = await response.json();
+
+                if (json.hamsters) {
+                    setHamsters(json.hamsters);
+                    setFetchError(false);
+                }
+
+                return json.hamsters;
+                
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        
+        console.log('Fetching ALL Hamsters - Custom Battle!')
+        fetchAllHamsters();
+
+    }, [])
+
+
     return (
         <Router className = "main">
             <Switch>
@@ -38,12 +73,16 @@ function App() {
                 {/* Here comes <Switch> & <Route>'s that point to the specific components  */}
                 <Switch>
                     <Route path="/matchup">
-                        <Matchup outcome={outcome} />
+                        <Matchup 
+                            fetchError={fetchError}
+                            hamsters={hamsters}
+                            outcome={outcome} />
                     </Route>
 
                     <Route path="/battle/:id1/:id2">
                         <CustomBattle 
-                            outcome={outcome}
+                            hamsters={hamsters}
+                            fetchError={fetchError}
                             setOutcome={setOutcome}
                             postMatchResult={postMatchResult}/>
                     </Route>
