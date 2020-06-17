@@ -2,15 +2,15 @@ import React, { useEffect, useState } from 'react';
 
 const Battle = ({ props: { competitors, setCompetitors, outcome, setOutcome, postMatchResult }}) => {
 
+    const [errorMessage, setErrorMessage] = useState('hamsters loading..')
     const [winner, setWinner] = useState('');
-    console.log('competitors', competitors);
+    console.log('Random Battle competitors', competitors);
 
     
     useEffect(() => {
         
         // Get new competitors
-        setCompetitors(null);
-        console.log('competitors', competitors);
+        // setCompetitors(null);
 
         let url = '/api/hamsters/random/2';
 
@@ -23,11 +23,10 @@ const Battle = ({ props: { competitors, setCompetitors, outcome, setOutcome, pos
                     // todo: kanske visa felmeddelande för användaren
                 }
                 const json = await response.json();
-                console.log('RandomBattle.useEffect json.hamsters=', json.hamsters);
-                setCompetitors(json.hamsters)
+
+                if (json.hamsters) setCompetitors(json.hamsters);
                 
-                
-                return json
+                return json.hamsters;
 
             } catch (err) {
                 console.error(err);
@@ -36,6 +35,10 @@ const Battle = ({ props: { competitors, setCompetitors, outcome, setOutcome, pos
         
         console.log('Fetching 2 Random hamsters!')
         fetchRandomHamsters();
+
+        console.log('hamsters after fetch: ', competitors);
+        
+        // setCompetitors([]);
 
     }, [])      // setCompetitors
 
@@ -60,8 +63,6 @@ const Battle = ({ props: { competitors, setCompetitors, outcome, setOutcome, pos
         
     }, [winner, loser, postMatchResult])
 
-
-    console.log('RandomBattle render competitors:', competitors);
         
     return(
         <section>
