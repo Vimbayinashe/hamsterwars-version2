@@ -3,8 +3,14 @@ import React, { useEffect, useState } from 'react';
 const Battle = ({ props: { competitors, setCompetitors, outcome, setOutcome, postMatchResult }}) => {
 
     const [winner, setWinner] = useState('');
+    console.log('competitors', competitors);
 
+    
     useEffect(() => {
+        
+        // Get new competitors
+        setCompetitors('');
+        console.log('competitors', competitors);
 
         let url = '/api/hamsters/random/2';
 
@@ -13,8 +19,9 @@ const Battle = ({ props: { competitors, setCompetitors, outcome, setOutcome, pos
             try {
                 const response = await fetch(url);
                 const json = await response.json();
+                setCompetitors(json.hamsters)
                 
-                return setCompetitors(json.hamsters)
+                return json
 
             } catch (err) {
                 console.error(err);
@@ -24,7 +31,7 @@ const Battle = ({ props: { competitors, setCompetitors, outcome, setOutcome, pos
         console.log('Fetching 2 Random hamsters!')
         fetchRandomHamsters();
 
-    }, [setCompetitors])
+    }, [])      // setCompetitors
 
 
     let loser = winner 
