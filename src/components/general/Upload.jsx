@@ -8,6 +8,7 @@ const Upload = () => {
     const [imgName, setImgName] = useState('');
     const [favFood, setFavFood] = useState('');
     const [loves, setLoves] = useState('');
+    const [postedHamster, setPostedHamster] = useState('');
 
     const [nameTouched, setNameTouched] = useState(false);
     const [ageTouched, setAgeTouched] = useState(false);
@@ -28,7 +29,59 @@ const Upload = () => {
     let [lovesClass, lovesError] = lovesTouched ? isValidText(loves) : ['', false];
 
     let anyError = ( nameError || ageError || imgNameError || favFoodError 
-        || lovesError ) ? true : false     
+        || lovesError ) ? true : false;
+        
+        
+    function submitHamster () {
+        let data = { name, age, favFood, loves, imgName: (imgName + '.jpg') };
+        console.log(data);
+       
+        postHamster(data);
+
+        setTimeout(() => {
+            // clear posted hamster details
+            setName('');  
+            setAge('');
+            setFavFood('');
+            setLoves('');
+            setImgName('');
+
+            setNameTouched(false);
+            setAgeTouched(false);
+            setFavFoodTouched(false);
+            setLovesTouched(false);
+            setImgNameTouched(false);
+        
+            setPostedHamster('');
+        }, 4000)
+
+    }
+
+    async function postHamster (data) {
+        let url = 'api/hamsters/new';
+                
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+    
+            const json = await response.json();
+            if (json.name) {
+                setPostedHamster(json.name)
+            }
+    
+            console.log('post: ', json);
+            
+            return json;
+
+        } catch (err) {
+            console.error(err);
+        }
+    }
 
 
     return(
@@ -98,10 +151,20 @@ const Upload = () => {
                 </div>
 
                 <div className="form-element">
-                    <button disabled={anyError}> Add New Hamster </button>
+                    <button disabled={anyError}
+                        onClick={submitHamster}> 
+                        Add New Hamster 
+                    </button>
                 </div>
 
             </form>
+
+            { 
+                postedHamster 
+                ? <div className="loaded">{postedHamster} successfully uploaded</div> 
+                : ''
+            }
+            
 
         </section>
     )
@@ -123,9 +186,6 @@ function isValidAge(age) {
     }
 }
 
-function postHamster() {
-    
-}
 
 
 export default Upload;

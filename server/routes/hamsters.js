@@ -280,7 +280,7 @@ router.post('/new', async (req, res) => {
         .collection('hamsters')
         .doc(JSON.stringify(id))
         .set({ hamster })
-        .then( res.status(201).send({ msg: `New hamster ${id} created!`, id }) ) 
+        .then( res.status(201).send({ msg: `New hamster ${id} created!`, id, name: hamster.name }) ) 
     
     } catch (err) {
         console.error(err);

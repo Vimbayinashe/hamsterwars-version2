@@ -19,3 +19,9 @@
 .upload {
     margin: 0 2em 10em 2em;
 }
+
+.loaded {
+    font-size: larger;
+    font-weight: bold;
+    color: rgb(31, 177, 31);
+}

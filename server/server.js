@@ -17,7 +17,7 @@ app.use(express.json());
 
 
 // Authorization middleware
-app.use(auth);
+// app.use(auth);
 
 
 // Routes
