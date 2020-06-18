@@ -16,8 +16,8 @@ const HamsterCard = ({ hamster, matchup }) => {
                 <div><span>Loves: </span> { hamster.loves } </div>
                 {
                     matchup ?
-                    <div>
-                        {`${hamster.name} has played ${hamster.games} and won ${hamster.wins}.`}
+                    <div className="matchup-info">
+                        {`${hamster.name} has played ${hamster.games} games.`}
                     </div>
                     : ''
                 }

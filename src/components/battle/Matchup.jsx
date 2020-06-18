@@ -15,7 +15,7 @@ const Matchup = ({ fetchError, hamsters, outcome }) => {
             {
                 outcome.win ? 
                 <><h2>The Winner!</h2>
-                <div className="competing-hamster">
+                <div className="matchup-hamster">
                     {
                         fetchError ?
                         <><p>This cute hamster won the latest battle:</p>

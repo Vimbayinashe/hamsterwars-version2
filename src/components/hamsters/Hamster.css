@@ -26,10 +26,6 @@
     width: 20em;
 }
 
-.hamster-card button {
-    margin-top: 1em;
-}
-
 .hamster-facts {
     margin: 0.5em 1em;
 }
@@ -39,7 +35,37 @@
 }
 
 
+.matchup-hamster {
+    margin: auto;
+    align-items: center;
+    padding: 3em;
+    width: 50em;
+}
 
+.matchup-hamster .hamster-card {
+    margin: 2em;
+    padding: 2em;
+    width: 40em;
+}
+
+.matchup-hamster img {
+    height: 35em;
+    width: 35em;
+}
+
+.matchup-hamster .hamster-image {
+    max-height: 35em;
+}
+
+.matchup-hamster .hamster-facts {
+    margin: 1em;
+    text-align: left;
+}
+
+.matchup-info {
+    font-style: italic;
+    margin-top: 0.2em;
+}
 
 
 
