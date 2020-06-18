@@ -55,7 +55,7 @@ const Battle = ({ fetchError, hamsters, setOutcome, postMatchResult }) => {
     return(
         <section>
             <h2>Hamster Battle</h2>
-            <p>Click on the cutest hamster!</p>
+            <h3>Click on the cutest hamster!</h3>
             <div className="competing-hamster">
                 {
                     hamstersExist
