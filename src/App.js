@@ -19,8 +19,6 @@ function App() {
     const [hamsters, setHamsters] = useState([]);
     const [randomCompetitors, setRandomCompetitors] = useState([]);
     const [outcome, setOutcome] = useState({});
-
-    console.log('outcome in App.js: ', outcome);
     
     const randomBattleProps = {
         competitors: randomCompetitors,
@@ -40,7 +38,6 @@ function App() {
             try {
                 const response = await fetch(url);
                 if( response.status !== 200 ) {
-                    console.log('Could not fetch all hamsters in App.js. Status: ' + response.status);
                     setFetchError(true);
                 }
                 const json = await response.json();
@@ -57,7 +54,7 @@ function App() {
             }
         }
         
-        console.log('Fetching ALL Hamsters - App.js!')
+        // console.log('Fetching ALL Hamsters - App.js!')
         fetchAllHamsters();
 
     }, [])
@@ -144,13 +141,8 @@ let postMatchResult = async (data) => {
         });
 
         const json = await response.json();
-
-        console.log('post: ', json);
-        console.log('KEY: ', key);
         
         return json;
-
-                        
 
     } catch (err) {
         console.error(err);

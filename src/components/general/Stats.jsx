@@ -17,17 +17,11 @@ const Stats = () => {
 
         let fetchStats = async () => {
             
-            console.log('Stats.jsx fetch running!');    /** */
-            
             Statistics.forEach(async (stat) => {
                 try {
                     let response = await fetch(stat.url);
-                    if( response.status !== 200 ) {
-                        console.log(`Could not fetch ${stat.name} in Stats Component. Status: ` + response.status);
-                    }
                     
                     let json = await response.json();
-                    console.log(json);   /** */
 
                     if(json.hamsters || json.totalGames ) {
                         stat.setState(json);

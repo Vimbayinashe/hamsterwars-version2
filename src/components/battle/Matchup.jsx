@@ -3,12 +3,9 @@ import HamsterCard from '../hamsters/HamsterCard';
 
 
 const Matchup = ({ fetchError, hamsters, outcome }) => {
-
-    if(!fetchError) console.log('hamsters in Matchup: ', hamsters);
     
-    let winner = hamsters.filter(hamster => hamster.id === outcome.win)
-    console.log('Winner in Matchup: ', winner);
-    
+    let winner = hamsters.filter(hamster => hamster.id === outcome.win);
+   
 
     return (
         <section>

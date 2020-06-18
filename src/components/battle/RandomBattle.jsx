@@ -7,9 +7,6 @@ const Battle = ({ props: { competitors, setCompetitors, setOutcome, postMatchRes
     const [fetchError, setFetchError] = useState(false);
     const [winner, setWinner] = useState('');
     const history = useHistory();
-
-    console.log('Random Battle competitors', competitors);
-
     
     useEffect(() => {
 
@@ -20,7 +17,6 @@ const Battle = ({ props: { competitors, setCompetitors, setOutcome, postMatchRes
             try {
                 const response = await fetch(url);
                 if( response.status !== 200 ) {
-                    console.log('Could not fetch competitors. Status: ' + response.status);
                     setFetchError(true);
                 }
                 const json = await response.json();
@@ -37,7 +33,6 @@ const Battle = ({ props: { competitors, setCompetitors, setOutcome, postMatchRes
             }
         }
         
-        console.log('Fetching 2 Random hamsters!')
         fetchRandomHamsters();
         
     }, [setCompetitors])      
@@ -57,7 +52,6 @@ const Battle = ({ props: { competitors, setCompetitors, setOutcome, postMatchRes
                 defeat: loser.id
             };
 
-            console.log('Posting Random Match Battle!')
             postMatchResult(result);
             setOutcome(result);
             renderRedirect();

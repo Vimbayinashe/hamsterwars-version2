@@ -34,7 +34,6 @@ const Upload = () => {
         
     function submitHamster () {
         let data = { name, age, favFood, loves, imgName: (imgName + '.jpg') };
-        console.log(data);
        
         postHamster(data);
 
@@ -73,8 +72,6 @@ const Upload = () => {
             if (json.name) {
                 setPostedHamster(json.name)
             }
-    
-            console.log('post: ', json);
             
             return json;
 
@@ -189,13 +186,3 @@ function isValidAge(age) {
 
 
 export default Upload;
-
-/**
- * {
-    "loves": "Running that wheeeeeeeeeeeeeeeel!",
-    "age": 5,
-    "favFood": "persika",
-    "name": "Tulau",
-    "imgName": "hamster-Y.jpg"
-}
- */

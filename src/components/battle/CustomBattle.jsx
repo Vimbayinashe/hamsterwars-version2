@@ -7,9 +7,7 @@ const Battle = ({ fetchError, hamsters, setOutcome, postMatchResult }) => {
     const [winner, setWinner] = useState('');
     const { id1, id2 } = useParams();
     const history = useHistory();
-
-    console.log('hamsters props ', hamsters);
-    
+  
 
     useEffect(() => {
 
@@ -37,7 +35,6 @@ const Battle = ({ fetchError, hamsters, setOutcome, postMatchResult }) => {
                 defeat: loser
             };
 
-            console.log('Posting Custom Match Battle!')
             postMatchResult(result);
             setOutcome(result);
             renderRedirect();
