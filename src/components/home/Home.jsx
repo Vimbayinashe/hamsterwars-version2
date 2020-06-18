@@ -12,7 +12,7 @@ const Home = () => {
             <Slideshow />
             {/* <h2>Home Page</h2> */}
 
-            <div>
+            <div className="link-buttons">
                 <Link to="/battle">
                     <Button>Play</Button>
                 </Link>

@@ -6,21 +6,16 @@ const [image, setImage] = useState('/assets/hamster-32.jpg');
 
 useEffect(() => {
     
-    let selectedImage = setInterval(() => {
-        let random = Math.ceil(Math.random() *40);
-        setImage(`/assets/hamster-${random}.jpg`)
-
-    },8000)
-    
-    return () => clearInterval(selectedImage);
+    let random = Math.ceil(Math.random() *40);
+    setImage(`/assets/hamster-${random}.jpg`)
 
 }, [])
 
 
     return (
-        <article>
+        <div className="home-picture">
             <img alt="a hamster" className="hamster-slideshow" src={image} />
-        </article>
+        </div>
     )
 }
 
