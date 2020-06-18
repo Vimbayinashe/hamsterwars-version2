@@ -17,7 +17,7 @@ const HamsterCard = ({ hamster, matchup }) => {
                 {
                     matchup ?
                     <div className="matchup-info">
-                        {`${hamster.name} has played ${hamster.games} games.`}
+                        {`${hamster.name} has played ${hamster.games + 1} games.`}
                     </div>
                     : ''
                 }
