@@ -1,0 +1,18 @@
+.form-element {
+    display: block;
+}
+
+
+
+.form-error {
+    border: 2px solid red;
+}
+
+.form-valid {
+    border: 2px solid rgb(31, 177, 31);
+}
+
+.hidden {
+    visibility: hidden;
+}
+
