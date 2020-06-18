@@ -22,7 +22,6 @@ const HamsterCard = ({ hamster, matchup }) => {
                     : ''
                 }
             </div>
-            <button> Select </button>
         </div>
     )
 }

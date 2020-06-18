@@ -8,7 +8,6 @@ const Stats = () => {
     
     
     useEffect(() => {
-        // { hamsters: top } & top:[]   { totalGames : amount }
 
         let Statistics = [
             { name: 'bottom', url: '/api/charts/bottom/', setState: setLosers },
@@ -99,7 +98,3 @@ const Stats = () => {
 }
 
 export default Stats;
-
-// let losersURL = '/api/charts/bottom/';  
-// let topURL = '/api/charts/top/';
-// let gamesURL = '/api/stats/total/';    

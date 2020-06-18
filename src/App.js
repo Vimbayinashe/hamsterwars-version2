@@ -39,7 +39,7 @@ function App() {
             try {
                 const response = await fetch(url);
                 if( response.status !== 200 ) {
-                    console.log('Could not fetch Custom - all hamsters. Status: ' + response.status);
+                    console.log('Could not fetch all hamsters in App.js. Status: ' + response.status);
                     setFetchError(true);
                 }
                 const json = await response.json();
@@ -56,7 +56,7 @@ function App() {
             }
         }
         
-        console.log('Fetching ALL Hamsters - Custom Battle!')
+        console.log('Fetching ALL Hamsters - App.js!')
         fetchAllHamsters();
 
     }, [])
@@ -99,7 +99,7 @@ function App() {
                     </Route>
 
                     <Route path="/all-hamsters">
-                        <Hamsters />
+                        <Hamsters hamsters={hamsters} />
                     </Route>
                     
                     <Route exact path="/">

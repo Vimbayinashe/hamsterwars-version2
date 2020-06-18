@@ -20,10 +20,10 @@ const Matchup = ({ fetchError, hamsters, outcome }) => {
                         fetchError ?
                         <><p>This cute hamster won the latest battle:</p>
                         <img src={`/assets/hamster-${outcome.win}.jpg`} alt=""/></>
-                        : <HamsterCard hamster={winner} matchup={true} />
+                        : <HamsterCard hamster={winner[0]} matchup={true} />
                     }
                 </div></>
-                : <div className="error-message">
+                : <div className="matchup error-message">
                     There is no previous match result to show.
                 </div>
             }
