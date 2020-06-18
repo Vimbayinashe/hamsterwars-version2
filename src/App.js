@@ -118,7 +118,6 @@ function App() {
             <Switch>
                 <Route path="/">
                     <footer>
-                        Footer <i>bla bla bla...</i>
                     </footer>
                 </Route>
             </Switch>

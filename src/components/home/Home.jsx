@@ -9,11 +9,8 @@ const Home = () => {
 
     return(
         <section className="home">
-            <article>
-                <i>This is what this page is about: </i>
-            </article>
-                <Slideshow />
-            <h2>Home Page</h2>
+            <Slideshow />
+            {/* <h2>Home Page</h2> */}
 
             <div>
                 <Link to="/battle">

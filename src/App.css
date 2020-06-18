@@ -11,7 +11,7 @@ body {
 
 
 .App-header {
-  background-color: #282c34;
+  background-color: saddlebrown;
   color: white;
   font-size: 2em;
   min-height: 10vh;
@@ -20,11 +20,12 @@ body {
 }
 
 .App-header h1 {
-    margin: 0;
+    margin: 0 2em;
+    padding-bottom: 0.5em;
 }
 
 .App-header nav a {
-    color: pink;
+    color: whitesmoke;
     font-size: 0.8em;
     margin: 0.2em;
     padding: 0.2em;
@@ -32,7 +33,9 @@ body {
 }
 
 .App-header nav a:hover {
-    background-color: silver;
+    /* background-color: silver; */
+    color: maroon;
+    font-size: 90%;
     text-decoration: underline;
 }
 
@@ -58,7 +61,7 @@ main {
 }
 
 footer {
-    background-color: wheat;
+    background-color: saddlebrown;
     height: 6em;
     position: absolute;
     bottom: 0;
