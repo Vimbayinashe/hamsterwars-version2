@@ -21,7 +21,7 @@ const Battle = ({ fetchError, hamsters, setOutcome, postMatchResult }) => {
         }
 
         // work around (limit exceeded)
-        setHamstersExist(true);
+        // setHamstersExist(true);
 
     }, [id1, id2, hamsters, setHamstersExist])
 
@@ -70,13 +70,10 @@ const Battle = ({ fetchError, hamsters, setOutcome, postMatchResult }) => {
                         { 
                             fetchError 
                             ? 'We are facing challenges loading hamsters' 
-                            : 'Please select valid hamsters between ....'
+                            : 'Please select valid hamsters'
                         }
                     </div>
                 }
-            </div>
-            <div>
-                <button onClick={()=> renderRedirect}>Submit</button>
             </div>
         </section>
     )
