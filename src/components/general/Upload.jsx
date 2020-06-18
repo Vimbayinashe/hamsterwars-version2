@@ -97,10 +97,10 @@ const Upload = () => {
                         onBlur={() => setNameTouched(true)}
                         onChange={e => setName(e.target.value)}
                         value={name}/>
-                    <div className={nameError ? 'error-message' : 'hidden'}>
-                        What is the hamster's name?
-                    </div>
                 </div>  
+                <div className={nameError ? 'error-message' : 'hidden'}>
+                    What is the hamster's name?
+                </div>
 
                 <div className="form-element">
                     <label>Age:</label>
@@ -150,7 +150,7 @@ const Upload = () => {
                     What would you like to call the hamster's picture?
                 </div>
 
-                <div className="form-element">
+                <div className="form-element button">
                     <button disabled={anyError}
                         onClick={submitHamster}> 
                         Add New Hamster 

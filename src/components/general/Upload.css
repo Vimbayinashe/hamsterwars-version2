@@ -2,6 +2,25 @@
     display: block;
 }
 
+.form-element label {
+    color: maroon;
+    display: block;
+    font-size: 1.2em;
+    font-weight: 600;
+    margin: 0.4em 0.5em 0.2em;
+}
+
+.form-element input {
+    display: block;
+    font-size: 1em;
+    margin: 0.3em;
+    padding: 0.2em;
+    width: 35em
+}
+
+.form-element + div {
+    margin: 0.4em 1em;
+}
 
 
 .form-error {
@@ -20,8 +39,29 @@
     margin: 0 2em 10em 2em;
 }
 
+.upload form {
+    margin-left: 5em;
+}
+
 .loaded {
+    color: rgb(31, 177, 31);
     font-size: larger;
     font-weight: bold;
-    color: rgb(31, 177, 31);
+    margin: 2em 8em;
 }
+
+.form-element button {
+    background-color: wheat;
+    /* border: 1px solid sienna; */
+    border-radius: 15px;
+    font-size: 1em;
+    margin: 2em;
+    padding: 1em;
+    position: relative;
+    left: 8em;
+}
+
+/* .form-element.button {
+    margin: auto;
+    width: 12em;
+} */
