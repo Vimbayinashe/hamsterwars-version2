@@ -116,9 +116,24 @@ h3 {
     text-align: center;
 }
 
+.stats {
+    margin: auto;
+}
 
+.stats-info {
+    margin: 2em;
+    margin-bottom: 4em;
+    padding: 0em 4em;
+}
 
+.stats-info li, p.stats-info {
+    font-size: 120%;
+    margin: 0.5em;
+    padding-left: 0.5em;
+}
 
-
+p.stats-info {
+    margin: 1em 5em 15em;
+}
 
 /*  */

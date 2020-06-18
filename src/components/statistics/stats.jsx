@@ -48,36 +48,42 @@ const Stats = () => {
     let topList = topHamsters ? 
         <ol>
             { topHamsters.hamsters.map(hamster => (
-                <li key={hamster.id}>{hamster.name} has won {hamster.wins} out of {hamster.games}</li>)) }
+                <li key={hamster.hamster.id}>{hamster.hamster.name} has won {hamster.hamster.wins} out of {hamster.hamster.games}</li>)) }
         </ol>
         : <p>We are currently unable to show you the top five hamsters.</p>;
 
     let bottomList = losers ? 
         <ol>
             { losers.hamsters.map(hamster => (
-                <li key={hamster.id}>{hamster.name} has lost {hamster.defeats} out of {hamster.games}</li>)) }
+                <li key={hamster.hamster.id}>
+                    {hamster.hamster.name} has lost {hamster.hamster.defeats} out of {hamster.hamster.games}
+                </li>)) }
         </ol>
         : <p> We are currently unable to show you the bottom five hamsters.</p>;
 
 
 
     return (
-        <section>
+        <section className="stats">
             <h2>Hamster Wars - Statistics</h2>
             
             <article>
                 <h3>Top 5 Hamsters</h3>
-                {topList}
+                <div className="stats-info">
+                    {topList}
+                </div>
             </article>
 
             <article>
                 <h3>Bottom 5 Hamsters </h3>
-                {bottomList}
+                <div className="stats-info">
+                    {bottomList}
+                </div>
             </article>
 
             <article>
                 <h3>Total Number of Battles</h3>
-                <p>
+                <p className="stats-info">
                 {
                     totalGames ?
                     `${totalGames.totalGames} games have been played to date.`
