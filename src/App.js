@@ -8,7 +8,7 @@ import Hamsters from './components/hamsters/Hamsters';
 import RandomBattle from './components/battle/RandomBattle';
 import CustomBattle from './components/battle/CustomBattle';
 import Matchup from './components/battle/Matchup';
-import Stats from './components/statistics/Stats';
+import Stats from './components/general/Stats';
 import Upload from './components/general/Upload';
 import key from './APIKey';
 
