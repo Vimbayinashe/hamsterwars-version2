@@ -9,6 +9,7 @@ import RandomBattle from './components/battle/RandomBattle';
 import CustomBattle from './components/battle/CustomBattle';
 import Matchup from './components/battle/Matchup';
 import Stats from './components/statistics/Stats';
+import Upload from './components/general/Upload';
 import key from './APIKey';
 
 
@@ -74,9 +75,14 @@ function App() {
                 {/* Here comes <Switch> & <Route>'s that point to the specific components  */}
                 <Switch>
 
+                    <Route path="/upload">
+                        <Upload />
+                    </Route>
+
                     <Route path="/stats">
                         <Stats />
                     </Route>
+
                     <Route path="/matchup">
                         <Matchup 
                             fetchError={fetchError}
